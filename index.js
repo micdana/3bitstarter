@@ -6,7 +6,10 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(request, response) {
-   response.send(fs.readFileSync(index.html));
+    fs.readFile('/3bitstarter/index.html', function (err, data) {
+	if (err) throw err;
+    response.send(data);
+	});
 });
 
 app.listen(app.get('port'), function() {
