@@ -1,13 +1,13 @@
 var express = require('express');
 var app = express.createServer(express.logger());
 var fs = require('fs');
-var read_myfile = fs.readFileSync('index.html','utf-8');
+var myfile = fs.readFileSync('index.html','utf-8');
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(request, response) {
-    response.send(read_myfile);
+    response.send(myfile);
     });
 
 app.listen(app.get('port'), function() {
